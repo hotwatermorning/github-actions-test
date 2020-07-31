@@ -9,6 +9,9 @@ on:
         required: true
         default: "false"
 
+env:
+  TEST_VALUE: ${{ secret.TEST_SECRET_VALUE1 }}
+
 jobs:
   job1:
     runs-on: ubuntu-latest
@@ -27,5 +30,28 @@ jobs:
     - name: Terminate
       run: |
         ./test.sh "Goodbye World."
-
+  job3:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: EnvTest
+      run: |
+        if ( ${{ github.event.inputs != null }} ) {
+          $env:ORG_GRADLE_PROJECT_renew_cache=${{github.event.inputs.renew_cache}}
+        }
+        Get-ChildItem env:
+      env:
+        TEST_VALUE_INNER: ${{ secret.TEST_SECRET_VALUE1 }}
+  job4:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: EnvTest
+      run: |
+        if [ ${{ github.event.inputs != null }} ]; then
+          export ORG_GRADLE_PROJECT_renew_cache=${{github.event.inputs.renew_cache}}
+        }
+        printenv
+      env:
+        TEST_VALUE_INNER: ${{ secret.TEST_SECRET_VALUE1 }}
 
