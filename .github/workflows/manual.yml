@@ -10,7 +10,7 @@ on:
         default: "false"
 
 env:
-  TEST_VALUE: ${{ secret.TEST_SECRET_VALUE1 }}
+  TEST_VALUE: ${{ secrets.TEST_SECRET_VALUE1 }}
 
 jobs:
   job1:
@@ -41,7 +41,7 @@ jobs:
         }
         Get-ChildItem env:
       env:
-        TEST_VALUE_INNER: ${{ secret.TEST_SECRET_VALUE1 }}
+        TEST_VALUE_INNER: ${{ secrets.TEST_SECRET_VALUE1 }}
   job4:
     runs-on: macos-latest
     steps:
@@ -53,5 +53,5 @@ jobs:
         }
         printenv
       env:
-        TEST_VALUE_INNER: ${{ secret.TEST_SECRET_VALUE1 }}
+        TEST_VALUE_INNER: ${{ secrets.TEST_SECRET_VALUE1 }}
 
