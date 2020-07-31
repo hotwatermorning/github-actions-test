@@ -44,7 +44,9 @@ jobs:
         if ( ${{ github.event.inputs != null }} ) {
           echo "echo2"
         }
+        echo $?
         Get-ChildItem env:
+        echo $?
       env:
         TEST_VALUE_INNER: ${{ secrets.TEST_SECRET_VALUE1 }}
   job4:
