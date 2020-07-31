@@ -17,7 +17,9 @@ jobs:
     - name: Initialize
       run: |
         ./test.sh "Hello World."
-        ./test.sh "${{ github.event.inputs.renew_cache }}"
+        input_is_null=${{ github.event.inputs == null }}
+        echo "input is null? ${input_is_null}"
+        ./test.sh "${{ github.event.inputs.renew_cache || 'true' }}"
   job2:
     runs-on: ubuntu-latest
     steps:
