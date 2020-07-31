@@ -57,7 +57,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: EnvTest
       run: |
-        if [ "${{ github.event.inputs != null }}" ]; then
+        if [ "${{ github.event.inputs != null }}" != "false" ]; then
           export ORG_GRADLE_PROJECT_renew_cache="${{ github.event.inputs.renew_cache }}"
         fi
         printenv
