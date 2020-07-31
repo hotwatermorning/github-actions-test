@@ -17,6 +17,7 @@ jobs:
     - name: Initialize
       run: |
         ./test.sh "Hello World."
+        ./test.sh "${{ github.event.inputs.renew_cache }}"
   job2:
     runs-on: ubuntu-latest
     steps:
