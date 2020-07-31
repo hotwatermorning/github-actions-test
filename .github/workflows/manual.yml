@@ -47,6 +47,8 @@ jobs:
         echo $?
         Get-ChildItem env:
         echo $?
+        Write-Host "LEC: $lastexitcode"
+        $lastexitcode=0
       env:
         TEST_VALUE_INNER: ${{ secrets.TEST_SECRET_VALUE1 }}
   job4:
