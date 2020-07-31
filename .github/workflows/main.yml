@@ -1,0 +1,19 @@
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Initialize
+      run: |
+        ./test.sh "Hello World."
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Terminate
+      run: |
+        ./test.sh "Goodbye World."
+
