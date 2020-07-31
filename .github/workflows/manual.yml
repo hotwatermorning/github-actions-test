@@ -39,7 +39,7 @@ jobs:
         $has_inputs=${{ github.event.inputs != null }}
         if ( $has_inputs ) {
           echo "echo1, ${{ github.event.inputs.renew_cache }}"
-          $env:ORG_GRADLE_PROJECT_renew_cache=${{ github.event.inputs.renew_cache }}
+          $env:ORG_GRADLE_PROJECT_renew_cache="${{ github.event.inputs.renew_cache }}"
         }
         if ( ${{ github.event.inputs != null }} ) {
           echo "echo2"
