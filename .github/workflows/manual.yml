@@ -1,7 +1,7 @@
 on:
-  workflow_dispatch:
-    branches: [ "*" ]
   push:
+    branches: [ "*" ]
+  workflow_dispatch:
     branches: [ "*" ]
 
 jobs:
