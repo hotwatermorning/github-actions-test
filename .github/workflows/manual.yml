@@ -3,6 +3,11 @@ on:
     branches: [ "*" ]
   workflow_dispatch:
     branches: [ "*" ]
+    inputs:
+      renew_cache:
+        description: "Renew Cache"
+        required: true
+        default: "false"
 
 jobs:
   job1:
